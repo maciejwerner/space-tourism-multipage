@@ -1,0 +1,83 @@
+@import "variables";
+@import "mixins";
+
+.body {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+
+  color: $color-light-gray;
+  font-weight: $Weight-400;
+  line-height: 1.8; 
+
+  overflow-x: hidden;
+  
+  &--home {
+    @include set-background('home');
+  }
+
+  &--destination {
+    @include set-background('destination');
+  }
+
+  &--crew {
+    @include set-background('crew');
+  }
+
+  &--technology {
+    @include set-background('technology');
+  }
+
+  &--error {
+    @include set-background('home');
+  }
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+  padding-top: 2rem;
+}
+
+.section {
+  height: 100%;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1900px;
+  position: relative;
+
+  &--main {
+    width: 80%;
+  }
+}
+
+.section__title {
+  color: $color-white;
+  text-transform: uppercase;
+  font-family: $Family-Barlow-Condensed;
+  font-weight: $Weight-400;
+  letter-spacing: 2.2px;
+}
+
+.section__number {
+  color: $color-gray;
+  padding-inline-end: 0.92rem;
+  opacity: 0.5;
+}
+
+@include media-tablet-lg {
+  .main {
+    padding-top: 3rem;
+  }
+
+  .container {
+    margin: 0 0 0 auto;
+  }
+}

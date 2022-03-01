@@ -1,0 +1,85 @@
+@import 'variables';
+
+@mixin flex($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin hide-content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@mixin show-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* Extra small devices (phones, 576px and down) */
+@mixin media-mobile-sm {
+  @media screen and (max-width: $Breakpoint-sm) {
+    @content;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 577px and up) */
+@mixin media-mobile-sm-up {
+  @media screen and (min-width: calc(#{$Breakpoint-sm} + 1px)) {
+    @content;
+  }
+}
+
+@mixin media-between-mobile-sm-and-media-tablet-lg {
+  @media screen and (min-width: calc(#{$Breakpoint-sm} + 1px)) and (max-width: calc(#{$Breakpoint-lg} - 1px)) {
+    @content;
+  }
+}
+
+@mixin media-between-mobile-xs-and-media-tablet-md {
+  @media screen and (min-width: calc(#{$Breakpoint-xs} + 1px)) and (max-width: calc(#{$Breakpoint-md} - 1px)) {
+    @content;
+  }
+}
+
+@mixin media-between-media-tablet-and-media-tablet-lg {
+  @media screen and (min-width: calc(#{$Breakpoint-md} + 1px)) and (max-width: calc(#{$Breakpoint-lg} - 1px)) {
+    @content;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@mixin media-tablet {
+  @media screen and (min-width: $Breakpoint-md) {
+    @content;
+  } 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@mixin media-tablet-lg {
+  @media screen and (min-width: $Breakpoint-lg) {
+    @content;
+  } 
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@mixin media-desktop {
+  @media screen and (min-width: $Breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin set-background($view: 'home') {
+  background-image: url('~@/assets/img/'+ $view + '/background-'+ $view +'-mobile.jpg');
+
+  @include media-tablet {
+    background-image: url('~@/assets/img/'+ $view + '/background-'+ $view +'-tablet.jpg');
+  }
+
+  @include media-desktop {
+    background-image: url('~@/assets/img/'+ $view + '/background-'+ $view +'-desktop.jpg');
+  }
+}
